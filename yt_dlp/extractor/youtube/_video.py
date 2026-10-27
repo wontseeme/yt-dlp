@@ -4476,9 +4476,9 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                 elif info.get('view_count') is None:
                     info['view_count'] = vc
 
-                    if self._preferred_lang:
-                info['title'] = traverse_obj(
-                    vpir, ('title', 'runs', 0, 'text', {str}), default=info['title'])
+                if self._preferred_lang:
+                    info['title'] = traverse_obj(
+                        vpir, ('title', 'runs', 0, 'text', {str}), default=info['title'])
 
 
         vsir = get_first(contents, 'videoSecondaryInfoRenderer')
