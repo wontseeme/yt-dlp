@@ -4482,10 +4482,9 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
 
         vsir = get_first(contents, 'videoSecondaryInfoRenderer')
         if vsir:
-             if self._preferred_lang:
+            if self._preferred_lang:
                 info['description'] = traverse_obj(
-                    vsir, ('attributedDescription', 'content', {str}), default=info['description'])
-                 
+                    vsir, ('attributedDescription', 'content', {str}), default=info['description'])     
             vor = traverse_obj(vsir, ('owner', 'videoOwnerRenderer'))
             collab_view_models = traverse_obj(vor, (
                 'attributedTitle', 'commandRuns', ..., 'onTap', 'innertubeCommand', 'showDialogCommand',
